@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}LogIn{% endblock %}
+
+{% block body %}
+<h1 class="m-5" style="color: green;">Please LogIn !!!</h1>
+
+<form method="post" style="font-weight: bold;font-size: 1.2em;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-outline-success m-4 px-4 fs-5">Submit</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Messages{% endblock %}
+
+{% block body %}
+<div class="container d-flex text-center">
+    <a href="{% url 'home_page:home_page' %}" class="btn btn-outline-primary fs-2 me-5 ms-5 mt-4 p-2"><i class="bi bi-backspace-fill"></i></a>
+    <h6 style="text-align: end;"><a href="{% url 'home_page:newmessage' %}" class="btn btn-outline-success m-4">New Message</a></h6>
+</div>
+<h1 style="color: rgb(0, 110, 255); text-align: center;"><i class="bi bi-chat-dots-fill ms-5"></i> Messages !!!</h1>
+<div class="container">
+    <div class="card m-5 p-2" style="background-color:rgba(247, 231, 1, 0.692); border-radius: 2em;max-height: 40em; overflow-y: auto">
+        <hr>
+        <ul class="fs-4">
+            {% for key,values in messages.items %}
+            <li>
+                <a href="{% url 'home_page:messagedetail' values.0.from_user.pk %}" style="text-decoration: none;">
+                    <h4 style="color: crimson;">{{key}}</h4>
+                    <p style="color: rgb(223, 7, 212);">{{values.count}}</p>
+                </a>
+                <hr>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

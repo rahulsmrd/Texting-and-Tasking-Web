@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}New{% endblock %}
+
+{% block body %}
+<div class="container text-center">
+    
+    <h1 class="m-5">New Message !!! </h1>
+    
+    <form method="post" style="font-weight: bold; font-size: 1.5em;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-outline-success fs-4 m-5">Send</button>
+    </form>
+
+</div>
+
+{% endblock %}

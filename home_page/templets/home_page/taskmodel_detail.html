@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="d-flex m-5">
+        <a href="{% url 'home_page:tasks' %}" class="btn btn-outline-primary fs-3 me-5 ms-5"><i class="bi bi-backspace-fill"></i></a>
+        <h1 class="ms-5" style="color: green; text-align: center;"><i class="bi bi-list-task me-3 ms-5"></i>Task Details !!!</h1>
+    </div>
+    <div class="card m-5 p-2" style="background-color: rgba(127, 255, 212, 0.61); border-radius: 2em;">
+        <h2 style="color: crimson; text-align: center;">Assigned by : <b>{{ task.assigned_by }}</b></h2><hr><br><br>
+        <h3 class="ms-5">Taks Description : <b>{{ task.task }}</b></h3>
+        <hr>
+        {% if task.mark_as_done %}
+        <h4 class="m-4 text-center" style="color: blueviolet;"><em>Task Completed</em></h4>
+        {% else %}
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-outline-warning">Mark as Done</button>
+        </form>
+        {% endif %}
+    </div>
+    <a href="{% url 'home_page:delete' task.pk %}" class="btn btn-outline-danger ms-5">Delete</a>
+</div>
+{% endblock %}

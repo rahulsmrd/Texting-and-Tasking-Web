@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}SignUp{% endblock %}
+
+{% block body %}
+<h1 class="text-center m-5" style="color: green;">Please SignUp !!!</h1>
+
+<form method="post" enctype="multipart/form-data" style="font-weight: bold;font-size: 1.2em;">
+    {% csrf_token %}
+    {{ Userform.as_p }}
+    {{ profile_form.as_p }}
+    <button type="submit" class="btn btn-outline-success m-4 px-4 fs-5 mb-5">SignUp</button>
+</form>
+
+{% endblock %}

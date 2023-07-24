@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+<div class="container p-2 my-5" style="background-color:blueviolet; border-radius: 2em;">
+
+    <div class="card m-5" style="border-radius: 2em;border: 0.5em solid black;">
+        <h1 class="text-center mt-5" style="color: crimson;text-decoration: underline;"> About Web !!!</h1>
+        <h3 class="px-5 my-5" style="text-align: center;">
+            This web allows users to make <b>Chating</b> in real time and also provides a facility to <b>assign
+                Tasks</b> to particular users.
+        </h3>
+        <h1 style="text-align: center;color: crimson; text-decoration:underline ;">About Tasks</h1>
+        <h3 class="ms-5 mt-4">The Web comes withe feature of Seperated Tasks like: </h3>
+        <ul class="m-5 fs-3">
+            <li>Currently active Tasks</li>
+            <li>Tasks assigned by current user</li>
+            <li>Completed Tasks</li>
+        </ul>
+        <h1 style="text-align: center;color: crimson; text-decoration:underline ;">About Messages</h1>
+        <h3 style="text-align: center;" class="mt-5">
+            This web allows user to have a chat with the new Persons (Unknown).
+        </h3>
+        <h3 class="ms-5">
+            This facility comes with following features
+            <ul class="m-5">
+                <li>New Chat</li>
+                <li>Display number of messages from a Particular user</li>
+                <li>Realtime Chatting</li>
+            </ul>
+        </h3>
+        <div class="container m-3 text-center">
+            <i><h2 style="font-weight: bold;">Please LogIn to enjoy and use the Features of the Web !!!!</h2></i>
+            <a href="{% url 'user_data:login' %}"><button class="btn btn-outline-success fs-3 px-5 my-3">LogIn</button></a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<a href="{% url 'home_page:tasks' %}" style="color: black;text-decoration: none;">
+    <div class="container m-4">
+        <div class="card" style="border-radius: 2em;">
+            <h1 class="p-3" style="color: green;"><i class="bi bi-list-task m-2"></i>Tasks !!!</h1>
+            <hr>
+            <ol class="fs-4" style="color: green;">
+                {% for task in tasks %}
+                <li>
+                    <h4 style="color: purple;">Assigned by : <b>{{ task.assigned_by }}</b> </h4>
+                    <p style="color: chocolate;">Tap to see Description ...</p>
+                    <hr>
+                </li>
+                {% endfor %}
+            </ol>
+
+        </div>
+    </div>
+</a>
+<br><br>
+<a href="{% url 'home_page:messages' %}" style="color: black;text-decoration: none;">
+    <div class="container m-4">
+        <div class="card" style="border-radius: 2em;">
+            <h1 class="p-3" style="color: rgb(0, 110, 255);"><i class="bi bi-chat-dots-fill m-2"></i> Messages !!!</h1>
+            <hr>
+            <ol class="fs-4" style="color: rgb(0, 110, 255);">
+                {% for message in messages %}
+                <li>
+                    <h4 style="color: crimson;">Message From : <b>{{ message.from_user }}</b> </h4>
+                    <p style="color: darkgoldenrod;">Tap to see ...</p>
+                    <hr>
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+</a>
+<br><br>
+
+
+{% endblock %}

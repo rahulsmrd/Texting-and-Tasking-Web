@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Posts{% endblock %}
+
+{% block body %}
+
+<div class="d-flex">
+<h1 class="m-5 me-auto" style="color: chocolate;">@{{ username }}</h1>
+<img src="{{ profile.url }}" style="width: 5em;height: 5em;" class="rounded-circle rounded-2 m-3" alt="img not found">
+</div>
+
+<br>
+<h1>Posts of @{{username}}</h1>
+<br> <hr>
+<ol>
+{% for users in user_post %}
+    <li class="fs-3">
+        <a href="{% url 'blog_app:post_detail' users.pk %}" style="text-decoration: none; color: orange;">
+        <h2>{{ users.headding }}</h2></a>
+    </li>
+    <hr>
+{% endfor %}
+</ol>
+{% endblock %}

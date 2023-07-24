@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+<div class="container text-center">
+    <h1 class="m-5">New Task !!!</h1>
+    <form method="post" style="font-weight: bold;font-size: 1.5em;">
+        {% csrf_token %}
+        {{ task.as_p }}
+        <button class="btn btn-outline-success fs-4 m-5">Assign</button>
+    </form>
+</div>
+
+{% endblock %}

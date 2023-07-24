@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}{{ messages.0.to_user }}{% endblock %}
+
+{% block body %}
+
+<div class="d-flex mt-3 text-center">
+    <a href="{% url 'home_page:messages' %}" class="btn btn-outline-primary fs-3 me-5 ms-5"><i class="bi bi-backspace-fill"></i></a>
+    <h1 class="text-center m-1 ms-5" style="color: crimson;"><i class="bi bi-chat-dots-fill me-3 ms-5"></i>
+        {{messages.0.from_user }} </h1>
+</div>
+<div class="container d-flex mt-0">
+
+    <div class="container m-2 w-50 ms-auto" style="width: fit-content;">
+        <h1 class="text-center m-3" style="color: green;">Messages Sent</h1>
+        <div class="card" style="height: 20em; overflow-y: auto;background-color: rgba(127, 255, 212, 0.596); border-radius: 1em;">
+            <ul>
+                {% for message in msg %}
+                <li>
+                    <h3 class="ms-auto"> {{message.message}} </h3>
+                    <p class="ms-auto"> {{ message.time_sent }} </p>
+                    <hr>
+                </li>
+                {% endfor %}
+            </ul>
+            <p class="ms-auto">Total no. of Messages : {{ msg.count }}</p>
+        </div>
+    </div>
+
+
+    <div class="container m-2 w-50 me-auto" style="width: fit-content;">
+        <h1 class="text-center m-3" style="color: green;">Messages Received</h1>
+        <div class="card" style="height: 20em; overflow-y: auto;background-color: rgba(127, 255, 212, 0.596); border-radius: 1em;">
+            <ul>
+                {% for message in messages %}
+                <li>
+                    <h3 class="ms-3 mt-2"> {{message.message}} </h3>
+                    <p class="ms-5"> {{ message.time_sent }} </p>
+                    <hr>
+                </li>
+                {% endfor %}
+            </ul>
+            <p class="ms-auto">Total no. of Messages : {{ messages.count }}</p>
+        </div>
+    </div>
+
+</div>
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+            <div class="d-flex m-3 ms-4">
+                {{ form }}
+                <button type="submit" class="btn btn-outline-success ms-2 fs-4"><i class="bi bi-send-fill"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

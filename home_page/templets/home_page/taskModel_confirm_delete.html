@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+<h1 style="text-align: center; color: crimson;" class="m-5">Are You sure you want to delete <b>'{{taskmodel.task}}'</b> task ?</h1>
+
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-danger m-3">Delete</button>
+        <a href="{% url 'home_page:taskdetail' taskmodel.pk %}" class="btn btn-outline-success m-2">Cancle</a>
+    </form>
+</div>
+
+{% endblock %}

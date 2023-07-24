@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="d-flex m-5">
+        <a href="{% url 'home_page:home_page' %}" class="btn btn-outline-primary fs-3 me-5 ms-5"><i
+                class="bi bi-backspace-fill"></i></a>
+        <h1 class="ms-5" style="color: rgb(186, 5, 241);">All Tasks !!! </h1>
+    </div>
+
+    <div class="card"
+        style="max-height: 30em; overflow-y: auto;background-color: rgba(255, 166, 0, 0.507);border-radius: 2em;">
+        <h1 class="ms-5" style="color: crimson;"><i class="bi bi-list-task me-3 ms-5"></i>Incomplete Tasks !!!</h1>
+        <hr>
+        <ol class="fs-4 m-2">
+            {% for task in metask %}
+            {% if not task.mark_as_done %}
+            <a href="{% url 'home_page:taskdetail' task.pk %}" style="text-decoration: none;">
+                <li style="color: crimson;">
+                    <h4 style="color: black;">Assigned by : <b>{{ task.assigned_by }}</b> </h4>
+                    <p style="color:darkgreen;">Taks Description : {{task.task}}</p>
+                    <hr>
+                </li>
+            </a>
+            {% endif %}
+            {% empty %}
+            <h4>No Incomplete Tasks</h4>
+            {% endfor %}
+        </ol>
+
+    </div>
+    <br><br>
+    <div class="card"
+        style="max-height: 30em; overflow-y: auto;background-color: rgba(248, 244, 0, 0.493);border-radius: 2em;">
+        <h1 class=" ms-5" style="color: crimson;"><i class="bi bi-list-task me-3 ms-5"></i>Tasks assigned by me !!!</h1>
+        <hr>
+        <ol class="fs-4 m-2">
+            {% for task in bytask %}
+            <a href="{% url 'home_page:taskdetail' task.pk %}" style="text-decoration: none;">
+                <li style="color: crimson;">
+                    <h4 style="color: black;">Assigned to : <b>{{ task.assigned_to }}</b> </h4>
+                    <p style="color: darkmagenta;">Taks Description : {{task.task}}</p>
+                    <hr>
+                </li>
+            </a>
+            {% endfor %}
+        </ol>
+
+    </div>
+    <br><br>
+    <div class="card"
+        style="max-height: 30em; overflow-y: auto;border-radius: 2em;background-color: rgba(11, 245, 11, 0.432);">
+        <h1 class=" ms-5" style="color: crimson;"><i class="bi bi-list-task me-3 ms-5"></i>Tasks Completed !!!</h1>
+        <hr>
+        <ol class="fs-4 m-2">
+            {% for task in completed %}
+            <a href="{% url 'home_page:taskdetail' task.pk %}" style="text-decoration: none;">
+                <li style="color: crimson;">
+                    <h4 style="color: black;">Assigned by : <b>{{ task.assigned_by }}</b> </h4>
+                    <p style="color: darkslateblue;">Taks Description : {{task.task}}</p>
+                    <hr>
+                </li>
+            </a>
+            {% endfor %}
+        </ol>
+
+    </div>
+</div><br><br>
+{% endblock %}

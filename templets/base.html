@@ -35,6 +35,7 @@
                 </ul>
                 {% if user.is_authenticated %}
                 <form class="d-flex">
+                    <h2 style="color: aliceblue;">Welcome {{ user.username }}</h2>
                     <a href="{% url 'home_page:newtask' %}" class="btn btn-outline-warning m-2" >New Task</a>
                     <a href="{% url 'home_page:newmessage' %}" class="btn btn-outline-primary m-2" >New Message</a>
                     <a href="{% url 'user_data:logout' %}" class="btn btn-outline-danger m-2" >LogOut</a>
